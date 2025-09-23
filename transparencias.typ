@@ -9,15 +9,14 @@
 
 #let title = [Memorias de p\*\*\*\* madre]
 
-#let mono(text) = {
-  h(0.3em)
-  box(
+#let mono(text) = [
+  #box(
     fill: color.rgb("#f5f5f5"),
     outset: 0.3em,
     radius: 0.3em,
     raw(text),
   )
-}
+]
 
 #show: simple-theme.with(
   aspect-ratio: "4-3",
@@ -27,6 +26,9 @@
 // #set heading(numbering: numbly("{1}.", default: "1.1"))
 #set list(indent: 1em, spacing: 1em)
 #set enum(indent: 1em, spacing: 1em)
+
+// default zebraw config
+#let zebraw = zebraw.with(numbering: false, lang: false)
 
 #title-slide[
   #heading(title, outlined: false)
@@ -123,3 +125,65 @@
       "https://github.com/havarddj/typst-preview.el",
       [typst-preview.el],
     )
+
+
+
+= Sintaxis
+
+
+== Modos sintácticos
+
+
+#grid(
+  columns: 2,
+  gutter: 2em,
+  [
+    *_Markup_* (#mono("[..]")): Modo por defecto, _WYSIWYG_
+    #speaker-note([_What You See Is What You Get_, básicamente markdown])
+  ],
+  [
+    #zebraw(
+      numbering: false,
+      lang: false,
+      ```typ
+      Hola buenas tardes, me llamo Tux 🐧.
+      ```,
+    )
+  ],
+)
+
+
+#pause
+
+#grid(
+  columns: 2,
+  gutter: 2em,
+  [
+    *Código* (#mono("#")): Permite usar directamente el lenguaje de _scripting_
+  ],
+  [
+    #zebraw(
+      ```typc
+      let foo(x) = { x + 1 }
+      let bar = foo(69)
+      ```,
+    )
+  ],
+)
+
+#pause
+
+#grid(
+  columns: 2,
+  gutter: 2em,
+  [ *Mates* (#mono("$..$")) ],
+  [
+    #zebraw(
+      ```typm
+      x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a)
+      ```,
+    )
+  ],
+)
+
+$$
