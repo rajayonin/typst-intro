@@ -17,7 +17,7 @@
   aspect-ratio: "4-3",
   footer: [#org --- #title],
   primary: primary-color,
-  // config-common(handout: true),
+  config-common(handout: true),
 )
 
 
