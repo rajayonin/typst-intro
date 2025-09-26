@@ -9,44 +9,34 @@
 
 == Modos sintácticos
 
-*Código* (#mono("#")): Permite usar directamente el lenguaje de _scripting_.
-#zebraw(
-  ```typ
-  #let foo(n) = { n + 1 }
-  ```,
-)
-#zebraw(
-  ```typ
-  Tengo #foo(68) Labubus.
-  ```,
-)
+*Código* (`#`): Permite usar directamente el lenguaje de _scripting_.
+```typ
+#let foo(n) = { n + 1 }
+```
+```typ
+Tengo #foo(68) Labubus.
+```
 
 #pause
 
-*_Markup_* (#mono("[..]")): Modo por defecto, _WYSIWYG_.
+*_Markup_* (`[..]`): Modo por defecto, _WYSIWYG_.
 #speaker-note([_What You See Is What You Get_, básicamente markdown])
 
+```typ
+Typst es _blazingly fast_! 🚀
+```
 
-#zebraw(
-  ```typ
-  Typst es _blazingly fast_! 🚀
-  ```,
-)
-#zebraw(
-  ```typc
-  let cool-os = [*Linux!* 🐧]
-  ```,
-)
+```typc
+let cool-os = [*Linux!* 🐧]
+```
 
 #pagebreak()
 
-*Mates* (#mono("$..$")): Permite expresar ecuaciones matemáticas.
+*Mates* (`$..$`): Permite expresar ecuaciones matemáticas.
 
-#zebraw(
-  ```typ
-  $ x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a) $
-  ```,
-)
+```typ
+$ x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a) $
+```
 
 $ x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a) $
 
@@ -57,59 +47,53 @@ $ x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a) $
 Los distintos modos son intercalables:
 
 // mil gracias @JorgeyGari por tu aportación
-#zebraw(
-  ```typ
-  El peso de tus madres se calcula con $lim_(x -> 0) 1/x$.
-  #let peso(_madre) = { sym.infinity }
-  #for i in range(2) [
-    Tu madre #i pesa #peso(i) kg.
-  ]
-  ```,
-)
+```typ
+El peso de tus madres se calcula con $lim_(x -> 0) 1/x$.
+#let peso(_madre) = { sym.infinity }
+#for i in range(2) [
+  Tu madre #i pesa #peso(i) kg.
+]
+```
 
 
 == Formato de texto
-- Comentarios con #mono("//") o #mono("/* */")
+- Comentarios con `//` o `/* */`
 #pause
-- Caracteres especiales (#mono("\\"), #mono("#"), #mono("$"), #mono("_"), #mono(
-    "*",
-  )) se escapan con #mono("\\")
+- Caracteres especiales (`\\`, `#`, `$`, `_`, `*`) se escapan con `\\`
 #pause
-- #strong(text(black)[Negrita]): #mono("*...*") (#hi-link(
+- #strong(text(black)[Negrita]): `*...*` (#hi-link(
     "https://typst.app/docs/reference/model/strong/",
-    [`strong`],
+    [#old-raw("strong")],
   ))
 #pause
-- _Cursiva_: #mono("_..._") (#hi-link(
+- _Cursiva_: `_..._` (#hi-link(
     "https://typst.app/docs/reference/model/emph/",
-    [`emph`],
+    [#old-raw("emph")],
   ))
 #pause
-- #mono("Monoespaciado"): #mono("`...`") (#hi-link(
+- `Monoespaciado`: #raw("`...`") (#hi-link(
     "https://typst.app/docs/reference/model/raw/",
-    [`raw`],
-  ))
+  )[#old-raw("raw")])
 #pause
-- Bloques de código con #mono("```")
+- Bloques de código con #raw("```")
 #pause
-- #mono("= Capítulo"), #mono("== Sección"), #mono("=== Subsección") (#hi-link(
+- `= Capítulo`, `== Sección`, `=== Subsección` (#hi-link(
     "https://typst.app/docs/reference/model/heading/",
-    [`heading`],
+    [#old-raw("heading")],
   ))
 #pause
-- Notas a pie de página: #mono("#footnote([...])")
+- Notas a pie de página: `#footnote([...])`
 #pause
-- #hi-link("https://motherfuckingwebsite.com/", [Links]): #mono(
-    "#link(\"<url>\", [...]))",
-  ) o #mono("https://link.com")
+- #hi-link("https://motherfuckingwebsite.com/", [Links]): `#link("<url>")[...]`,
+  ) o `https://link.com`
 #pause
-- Comillas "inteligentes" (dependientes del idioma): #mono("\""), #mono("'")
+- Comillas "inteligentes" (dependientes del idioma): `"`, `'`
 #pause
-- #mono("..."), #mono("~") (_nsbp_), #mono("---")/#mono("--") (raya/semiraya),
-  #hi-link(
+- Símbolos: `~` (_nsbp_), `---`/`--` (raya/semiraya), #hi-link(
     "https://typst.app/docs/reference/symbols/sym/",
-    [`sym`],
-  ), #hi-link("https://typst.app/docs/reference/symbols/emoji/", [`emoji`])
+  )[#old-raw("sym")], #hi-link(
+    "https://typst.app/docs/reference/symbols/emoji/",
+  )[#old-raw("emoji")]
 
 
 == Saltos
@@ -118,33 +102,29 @@ rompe una línea.
 
 #pause
 
-- Para saltar una línea, se usa #mono("/")
+- Para saltar una línea, se usa `/`
 #pause
-- Para saltar un párrafo se deja una línea en blanco\ (o #mono("#parbreak()"))
+- Para saltar un párrafo se deja una línea en blanco\ (o `#parbreak()`)
 #pause
-- Para saltar una página se usa #mono("#pagebreak()")
+- Para saltar una página se usa `#pagebreak()`
 
 #pause
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
-  #zebraw(
-    ```typ
-    Esta línea no
-    la rompe ni Dios.
-    ```,
-  )
+  ```typ
+  Esta línea no
+  la rompe ni Dios.
+  ```
 ][
   #v(1em)
   Esta línea no la rompe ni Dios.
 ]
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
-  #zebraw(
-    ```typ
-    Esta la rompo yo\
-    porque me da la gana.
-    ```,
-  )
+  ```typ
+  Esta la rompo yo\
+  porque me da la gana.
+  ```
 ][
   #v(.3em)
   Esta la rompo yo\
@@ -153,25 +133,23 @@ rompe una línea.
 
 
 == Listas
-Enumeradas (#hi-link("https://typst.app/docs/reference/model/enum/", [`enum`]))
-o no enumeradas (#hi-link(
+Enumeradas (#hi-link(
+  "https://typst.app/docs/reference/model/enum/",
+  old-raw("enum"),
+)) o no enumeradas (#hi-link(
   "https://typst.app/docs/reference/model/list/",
-  [`list`],
+  old-raw("list"),
 )).
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
-  #zebraw(
-    ```typ
-    + Primero
-    + Segundo
-    ```,
-  )
-  #zebraw(
-    ```typ
-    - Uno
-    - Otro
-    ```,
-  )
+  ```typ
+  + Primero
+  + Segundo
+  ```
+  ```typ
+  - Uno
+  - Otro
+  ```
 ][
   #set list(indent: 0pt, spacing: auto)
   #set enum(indent: 0pt, spacing: auto)
@@ -188,14 +166,12 @@ o no enumeradas (#hi-link(
 Y se pueden anidar:
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
-  #zebraw(
-    ```typ
-    + Primero
-      - Primero uno
-      - Luego otro
-    + Segundo
-    ```,
-  )
+  ```typ
+  + Primero
+    - Primero uno
+    - Luego otro
+  + Segundo
+  ```
 ][
   #set list(indent: 0pt, spacing: auto)
   #set enum(indent: 0pt, spacing: auto)
@@ -207,30 +183,91 @@ Y se pueden anidar:
 ]
 
 
-
-== Estructura del documento
-
-
 == Referencias
+Primero se crea una marca (#hi-link(
+  "https://typst.app/docs/reference/foundations/label/",
+)[`label`]) con `<id>`.
+#pause
+- Para las referencias bibliográficas, esto no es necesario
 
+#pause
 
-== Figuras
+Para referenciarla, basta con usar `@id`
+#pause
+- Dependiendo de lo que hayas marcado (sección, figura, ecuación, etc.), se
+  pondrá un texto automáticamente
+#pause
+- Puedes especificar el texto (suplemento) con `@id[...]`
+
+#pause
+
+#v(.5em)
+
+#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+  ```typ
+  === Introducción <intro>
+  En la @intro...
+  ```
+][
+  #set heading(numbering: "1.")
+  #counter(heading).update((6, 9))
+  #show heading: set text(size: 25pt)
+
+  #v(.3em)
+  === Introducción <intro>
+  En la @intro...
+]
+
+#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+  ```typ
+  $ pi = e = 3 $ <real>
+  El @real[Teorema]...
+  ```
+][
+  #set math.equation(numbering: "(1)")
+  #show heading: set text(size: 26pt)
+
+  #v(.3em)
+  $ pi = e = 3 $ <real>
+  #v(-.5em)
+  El @real[Teorema]...
+]
 
 
 == Imágenes
+// pdf v0.14 #footnote([ver https://github.com/typst/typst/issues/145])
+// https://github.com/typst/typst/issues/1421
+// https://www.drawio.com/doc/faq/svg-export-text-problems
+```typ
+#figure(
+  image("molecular.jpg", width: 80%),
+  caption: [
+    A step in the molecular testing
+    pipeline of our lab.
+  ],
+)
+```
+
 
 
 == Tablas
-#link("https://www.latex-tables.com/?format=typst&force", [Generador de tablas])
+#hi-link("https://www.latex-tables.com/?format=typst&force")[Generador de
+  tablas]
 
 == Ecuaciones
 https://typerino.com/
 
-#link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html", [Chuleta
-  para fórmulas])
+#link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html")[Chuleta para
+  fórmulas]
 
-#link("https://qwinsi.github.io/tex2typst-webapp", [Conversor de fórmulas de
-  LaTeX a Typst])
+#link("https://qwinsi.github.io/tex2typst-webapp")[Conversor de fórmulas de
+  LaTeX a Typst]
+
+
+
+== Bibliografía
+
+
 
 == _Scripting_
 

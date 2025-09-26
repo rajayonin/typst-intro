@@ -47,8 +47,8 @@
     [Typst CLI],
   )
 // - Linux
-//   - Arch, OpenSuse: #mono("typst")
-//   - cargo: #mono("typst-cli")
+//   - Arch, OpenSuse: `typst`
+//   - cargo: `typst-cli`
 // - Windows (winget)
 //   #zebraw(
 //     numbering: false,
@@ -89,3 +89,6 @@
     )
 
 #v(1fr)
+
+
+#focus-slide([¡A instalar!])

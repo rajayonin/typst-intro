@@ -3,5 +3,11 @@
 
 #import "/utils.typ": *
 
-= Paquetes
+
+= Plantillas y paquetes
+
+== Paquetes
 #hi-link("https://typst.app/universe/", [Typst Universe])
+
+
+== Plantilla para memorias

@@ -2,6 +2,7 @@
 #import themes.simple: *
 
 #import "@preview/tiaoma:0.3.0": qrcode
+#import "@preview/zebraw:0.5.5": zebraw
 
 #import "utils.typ": *
 
@@ -21,8 +22,27 @@
 )
 
 
+
 #set list(indent: 1em, spacing: 1em)
 #set enum(indent: 1em, spacing: 1em)
+
+// GFM-like monospace text
+
+#show raw.where(block: false): set raw(lang: "typ")
+#show raw.where(block: false): it => {
+  h(0.5em, weak: true)
+  box(
+    fill: color.rgb("#f5f5f5"),
+    outset: 0.3em,
+    radius: 0.3em,
+    it
+  )
+  h(0.5em, weak: true)
+}
+
+#show raw.where(block: true): it => {
+  zebraw(numbering: false, lang: false, it)
+}
 
 
 /* TITLEPAGE */
@@ -70,7 +90,6 @@
 #include "parts/how-to.typ"
 #include "parts/estilado.typ"
 #include "parts/paquetes.typ"
-#include "parts/plantilla.typ"
 
 
 /* MOAR INFO */
@@ -78,11 +97,11 @@
 #clear-header()
 
 == Más información
-- #hi-link("https://typst.app/docs", [Documentación de Typst])
-- #hi-link("https://forum.typst.app/", [Typst Forums])
-- #hi-link("https://discord.com/invite/typst-1054443721975922748", [Typst
-    Discord server])
-- #hi-link("https://typst.app/docs/guides/guide-for-latex-users/", [Guía para
-    usuarios de LaTeX])
-- #hi-link("https://sitandr.github.io/typst-examples-book/book/", [Typst
-    Examples Book])
+- #hi-link("https://typst.app/docs")[Documentación de Typst]
+- #hi-link("https://forum.typst.app/")[Typst Forums]
+- #hi-link("https://discord.com/invite/typst-1054443721975922748")[Typst
+    Discord server]
+- #hi-link("https://typst.app/docs/guides/guide-for-latex-users/")[Guía para
+    usuarios de LaTeX]
+- #hi-link("https://sitandr.github.io/typst-examples-book/book/")[Typst
+    Examples Book]
