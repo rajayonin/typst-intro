@@ -101,10 +101,13 @@
 
 == Más información
 - #hi-link("https://typst.app/docs")[Documentación de Typst]
+- #hi-link("https://sitandr.github.io/typst-examples-book/book/")[Typst Examples
+    Book]
 - #hi-link("https://forum.typst.app/")[Typst Forums]
 - #hi-link("https://discord.com/invite/typst-1054443721975922748")[Typst Discord
     server]
 - #hi-link("https://typst.app/docs/guides/guide-for-latex-users/")[Guía para
-    usuarios de LaTeX]
-- #hi-link("https://sitandr.github.io/typst-examples-book/book/")[Typst Examples
-    Book]
+    usuarios de #LaTeX]
+- #hi-link("https://gitlab.com/TheZoq2/ttt/")[Typst To #TeX]
+- #hi-link("https://github.com/mitex-rs/mitex")[Mi#TeX] (#LaTeX #sym.arrow Typst)
+- #strike[#hi-link("https://github.com/rajayonin/latex-thesis/")[L. D. Casais -- Memorias de TFG en #LaTeX] (2025)]

@@ -66,17 +66,15 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$.
     "https://typst.app/docs/reference/model/strong/",
     [#plain-raw("strong")],
   ))
-#pause
 - _Cursiva_: `_..._` (#hi-link(
     "https://typst.app/docs/reference/model/emph/",
     [#plain-raw("emph")],
   ))
-#pause
 - `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#hi-link(
     "https://typst.app/docs/reference/model/raw/",
   )[#plain-raw("raw")])
-#pause
 - #underline[Subrayado]: `#underline[...]`
+// - #strike[Tachado]: `#strike[...]`
 #pause
 - `= Capítulo`, `== Sección`, `=== Subsección` (#hi-link(
     "https://typst.app/docs/reference/model/heading/",
@@ -193,20 +191,129 @@ Y se pueden anidar:
 ]
 
 
+== Imágenes
+
+#v(1fr)
+
+Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
+  "https://jpeg.org/jpeg/",
+)[JPG], #link("https://www.w3.org/Graphics/GIF/spec-gif87.txt")[GIF], #link(
+  "https://www.w3.org/TR/SVG2/",
+)[SVG]#footnote[Excepto #plain-raw("foreignObject"), ver #hi-link(
+    "https://github.com/typst/typst/issues/1421",
+  )[typst/typst\#1421].], #link(
+  "https://pdfa.org/sponsored-standards/",
+)[PDF]#footnote[A partir de la versión 0.14, ver #hi-link(
+    "https://github.com/typst/typst/issues/145",
+  )[typst/typst\#145].], y _raw bytes_.
+
+#pause
+
+```typ
+#figure(
+  image("img0.png", width: 80%),
+  caption: [...]
+) <fig:img0> // label
+```
+
+#pause
+
+- La imagen siempre se incrusta donde especificas
+  - Equivalente al `H` de #LaTeX
+#pause
+- Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
+
+#v(.6fr)
+
+#pagebreak()
+
+=== Generación de diagramas
+Se recomienda trabajar con SVGs.
+
+- #hi-link("https://www.drawio.com")[draw.io]: La vieja confiable\
+#pause
+- #hi-link("https://excalidraw.com/")[Excalidraw]: Un rollito más _cool_
+#pause
+- #hi-link("https://plantuml.com/")[PlantUML]: Lenguaje declarativo para #link(
+    "https://www.omg.org/uml/",
+  )[UML]
+#pause
+- #hi-link("https://cetz-package.github.io/")[CeTZ]/#hi-link(
+    "https://typst.app/universe/package/fletcher",
+  )[fletcher]: Puro Typst (para _tryhards_)
+
+#pause
+
+#warning[Si los SVG dan problemas#footnote[Ver #hi-link(
+      "https://www.drawio.com/doc/faq/svg-export-text-problems",
+    )[draw.io FAQ].], exportar como PDF, importar en #hi-link(
+    "https://inkscape.org/",
+  )[Inkscape], y re-exportar a SVG.]
+
+
+
+== Tablas
+
+Echadle un vistazo a la #hi-link(
+  "https://typst.app/docs/guides/table-guide/",
+)[guía de tablas].
+
+También podéis usar un #hi-link(
+  "https://www.latex-tables.com/?format=typst",
+)[generador de tablas].
+
+#pause
+
+```typ
+#figure(
+  table(
+    columns: 2, // o `(1fr, 1fr)`
+    align: horizon, // o `auto` o `(left, right)`
+    [Fila 0, Columna 0], [Fila 0, Columna 1],
+    [Fila 1, Columna 0], [Fila 1, Columna 1],
+  ),
+  caption: [...]
+) <tab:example>
+```
+
+#pause
+
+Veremos más adelante cómo hacer magia con esto...
+
+
+
+== Ecuaciones
+Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
+  "https://qwinsi.github.io/tex2typst-webapp",
+)[Conversor de fórmulas de LaTeX a Typst.]], pero con menos `\`.
+
+- Echadle un vistazo al #hi-link(
+  "https://sitandr.github.io/typst-examples-book/book/basics/math/",
+)[capítulo en Typst Examples Book]
+- Hay herramientas interactivas como #hi-link("https://typerino.com/")[Typerino] para crearlas
+
+// #link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html")[Chuleta para
+//   fórmulas]
+
+TL;DR:
+- $x^(2y)$ con #rawm("x^(2y)"), $x_(2y)$ con #rawm("x_(2y)")
+- $"texto"$ con #rawm("\"texto\""), $x y$ con #rawm("x y")
+- $(2a)/b$ con #rawm("(2a)/b"), $(a + b)$ con #rawm("(a + b)")
+- $->$ con #rawm("->"), $<=$ con #rawm("<="), $!=$ con #rawm("!=")
+- $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con #rawm("Omega"), $NN$ con #rawm("NN") (ver #hi-link("https://typst.app/docs/reference/symbols/sym/")[#plain-raw("sym")])
+
+
 == Referencias
 Primero se crea una marca (#hi-link(
   "https://typst.app/docs/reference/foundations/label/",
 )[#plain-raw("label")]) con `<id>`.
-#pause
-- Para las referencias bibliográficas, esto no es necesario
+// - Para las referencias bibliográficas, esto no es necesario
 
 #pause
 
 Para referenciarla, basta con usar `@id`
-#pause
 - Dependiendo de lo que hayas marcado (sección, figura, ecuación, etc.), se
   pondrá un texto automáticamente
-#pause
 - Puedes especificar el texto (suplemento) con `@id[...]`
 
 #pause
@@ -243,90 +350,25 @@ Para referenciarla, basta con usar `@id`
   El @real[Teorema]...
 ]
 
+#pagebreak()
 
-== Imágenes
+=== Bibliografía
 
 #v(1fr)
 
-Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
-  "https://jpeg.org/jpeg/",
-)[JPG], #link("https://www.w3.org/Graphics/GIF/spec-gif87.txt")[GIF], #link(
-  "https://www.w3.org/TR/SVG2/",
-)[SVG]#footnote[Excepto #plain-raw("foreignObject"), ver #hi-link(
-    "https://github.com/typst/typst/issues/1421",
-  )[typst/typst\#1421].], #link(
-  "https://pdfa.org/sponsored-standards/",
-)[PDF]#footnote[A partir de la versión 0.14, ver #hi-link(
-    "https://github.com/typst/typst/issues/145",
-  )[typst/typst\#145].], y _raw bytes_.
+Las bibliografías se gestionan con #hi-link("https://github.com/plk/biblatex")[Bib#LaTeX] o #hi-link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva].
+- Entradas en un archivo `.bib`/`.yml`, con un ID y atributos#footnote[Más información sobre Bib#TeX/Bib#LaTeX en la #hi-link("https://bibtex.eu/types/")[documentación de CiteDrive].]
+- Es recomendable añadir el #hi-link("https://www.doi.org/the-identifier/what-is-a-doi/")[DOI] siempre que se pueda
+- Se referencian con `@entry-id` o, con suplemento, `@entry-id[suplemento]` (#hi-link("https://typst.app/docs/reference/model/cite/")[#plain-raw("cite")])
 
-#pause
-
+#v(.5em)
+Se imprime con:
+#v(-.5em)
 ```typ
-#figure(
-  image("img0.png", width: 80%),
-  caption: [...]
-) <fig:img0>
+#bibliography("references.bib", style: "ieee")
 ```
+#v(1fr)
 
-#pause
-
-- La imagen siempre se incrusta donde especificas
-  - Equivalente al `H` de #LaTeX
-#pause
-- Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
-
-#v(.6fr)
-
-#pagebreak()
-
-=== Generación de diagramas
-Se recomienda trabajar con SVGs.
-
-- #hi-link("https://www.drawio.com")[draw.io]: La vieja confiable\
-#pause
-- #hi-link("https://excalidraw.com/")[Excalidraw]: Un rollito más _cool_
-#pause
-- #hi-link("https://plantuml.com/")[PlantUML]: Lenguaje declarativo para #link(
-    "https://www.omg.org/uml/",
-  )[UML]
-#pause
-- #hi-link("https://cetz-package.github.io/")[CeTZ]: Puro Typst (para
-  _tryhards_)
-
-#warning[Si los SVG dan problemas#footnote[Ver #hi-link(
-      "https://www.drawio.com/doc/faq/svg-export-text-problems",
-    )[draw.io FAQ].], exportar como PDF, importar en #hi-link(
-    "https://inkscape.org/",
-  )[Inkscape], y re-exportar a SVG.]
-
-== Tablas
-#hi-link("https://www.latex-tables.com/?format=typst&force")[Generador de
-  tablas]
-
-== Ecuaciones
-https://typerino.com/
-
-#link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html")[Chuleta para
-  fórmulas]
-
-#link("https://qwinsi.github.io/tex2typst-webapp")[Conversor de fórmulas de
-  LaTeX a Typst]
-
-
-
-== Bibliografía
-
-
-== Otros
-
-=== `grid`
-
-
-=== `v` y `h`
-
-
-=== `box`
 
 
 == _Scripting_
@@ -340,6 +382,17 @@ https://typerino.com/
 // control de flujo
 
 // ejemplos de generar tablas a partir de arrays
+
+
+== Otras funciones
+
+=== `grid`
+
+
+=== `v` y `h`
+
+
+=== `box`
 
 
 

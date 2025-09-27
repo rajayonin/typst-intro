@@ -3,20 +3,21 @@
 
 #import "/utils.typ": *
 
+
 = Estilado
 
 
 #focus-slide[
   // #set raw(lang: "typc") // esto no funciona porque patata
-  #raw("show", lang: "typc") reemplaza funciones, mientras que #raw("set", lang: "typc") sobreescribe parámetros por defecto
+  #rawc("show") reemplaza funciones, mientras que #rawc("set") sobreescribe parámetros por defecto
 ]
 
 
-== Reglas #raw("set", lang: "typc")
+== Reglas #rawc("set")
 // _settear_ parámetros de funciones _builtin_
 
 
-== Reglas #raw("show", lang: "typc")
+== Reglas #rawc("show")
 // aplicar reglas a funciones, etc.
 
 // show-set

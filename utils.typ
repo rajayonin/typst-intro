@@ -1,4 +1,4 @@
-#import "@preview/metalogo:1.2.0": LaTeX
+#import "@preview/metalogo:1.2.0": LaTeX, TeX
 #import "@preview/touying:0.6.1": themes.simple
 #import "@preview/gentle-clues:1.2.0": warning
 
@@ -31,6 +31,10 @@
   show raw: it => { it.text }
   raw(..params)
 }
+
+// quick aliases
+#let rawm = raw.with(lang: "typm")
+#let rawc = raw.with(lang: "typc")
 
 
 // default zebraw config
