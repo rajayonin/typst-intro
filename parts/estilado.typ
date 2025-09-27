@@ -1,7 +1,15 @@
+#import "@preview/touying:0.6.1": *
+#import themes.simple: *
+
+#import "/utils.typ": *
 
 = Estilado
 
-// idioma
+
+#focus-slide[
+  // #set raw(lang: "typc") // esto no funciona porque patata
+  #raw("show", lang: "typc") reemplaza funciones, mientras que #raw("set", lang: "typc") sobreescribe parámetros por defecto
+]
 
 
 == Reglas #raw("set", lang: "typc")
@@ -17,5 +25,13 @@
 
 // show-where
 
+// show-selector
+
 
 == _Scope_
+
+
+== Ejemplos
+// idioma
+// headings (numbering)
+// page

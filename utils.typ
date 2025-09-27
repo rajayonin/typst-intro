@@ -1,15 +1,37 @@
 #import "@preview/metalogo:1.2.0": LaTeX
+#import "@preview/touying:0.6.1": themes.simple
+#import "@preview/gentle-clues:1.2.0": warning
 
 #let primary-color = aqua.darken(50%)
 
 
-/// Use the base `raw` instead of the custom one.
+// re-define warning
+#let warning = warning.with(header-inset: .3em, content-inset: .9em)
+
+// controls dark mode
+#let dark-mode = state("dark-mode", false)
+
+// re-define focus-slide to implement dark mode
+#let focus-slide(body, ..params) = {
+  simple.focus-slide(
+    {
+      dark-mode.update(true)
+      body
+      dark-mode.update(false)
+    },
+    ..params,
+  )
+}
+
+
+/// Use the plain ol' `raw` instead of the custom one.
 ///
 /// -> content
-#let old-raw(..params) = {
+#let plain-raw(..params) = {
   show raw: it => { it.text }
   raw(..params)
 }
+
 
 // default zebraw config
 // #let zebraw = zebraw.with(numbering: false, lang: false)

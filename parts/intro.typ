@@ -7,19 +7,17 @@
 = Introducción
 
 #focus-slide[
-
   #set align(left)
   #quote(attribution: [Yo], block: true)[
     Typst es como #LaTeX, pero no da asco.
   ]
-
 ]
 
 
 === Como #LaTeX...
 - Archivos de texto plano #speaker-note([Bueno para Git, y para
     reproductibilidad])
-- Defines reglas #sym.arrow plantillas
+- Defines reglas #sym.arrow programable
 - Extremadamente útil para $e - c dot u^a = c_i sqrt(o) + n/e^s$
 - Numeración y referencias automáticas #speaker-note([Bibliografías...])
 - Paquetes (librerías) para hacer mil cosas
@@ -46,23 +44,17 @@
     "https://github.com/typst/typst?tab=readme-ov-file#installation",
     [Typst CLI],
   )
-// - Linux
-//   - Arch, OpenSuse: `typst`
-//   - cargo: `typst-cli`
-// - Windows (winget)
-//   #zebraw(
-//     numbering: false,
-//     ```
-//     winget install --id Typst.Typst
-//     ```,
-//   )
-// - MacOS (brew)
-//   #zebraw(
-//     numbering: false,
-//     ```
-//     brew install Typst
-//     ```,
-//   )
+  // - Linux
+  //   - Arch, OpenSuse: `typst`
+  //   - cargo: `typst-cli`
+  // - Windows (winget)
+  //     ```
+  //     winget install --id Typst.Typst
+  //     ```,
+  // - MacOS (brew)
+  //     ```
+  //     brew install Typst
+  //     ```,
 #pause
 - *IDEs:* #hi-link("https://myriad-dreamin.github.io/tinymist/", [Tinymist])
   #link("https://microsoft.github.io/language-server-protocol/", [LSP])
@@ -91,4 +83,4 @@
 #v(1fr)
 
 
-#focus-slide([¡A instalar!])
+#focus-slide[¡A instalar!]
