@@ -13,11 +13,16 @@
 #let title = [Memorias de p\*\*\*\* madre]
 #let org = [GUL UC3M]
 
+// pass the "PRESENTATION" variable w/ --input to enable presentation mode
+#let presentation-mode = (
+  sys.inputs.at("PRESENTATION", default: none) != none
+)
+
 #show: simple-theme.with(
   aspect-ratio: "4-3",
   footer: [#org --- #title],
   primary: primary-color,
-  config-common(handout: true),
+  config-common(handout: not presentation-mode),
 )
 
 

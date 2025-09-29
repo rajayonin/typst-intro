@@ -8,6 +8,16 @@ This presentation uses [Touying](https://touying-typ.github.io/), a [Typst](http
 
 ## Compilation
 
+Handout (default) mode:
+```
+typst c transparencias.typ
+```
+
+Presentation mode:
+```
+typst c --input PRESENTATION=1 transparencias.typ
+```
+
 
 
 ## Cool info
