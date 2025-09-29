@@ -49,7 +49,7 @@ Los distintos modos son intercalables:
 
 // mil gracias @JorgeyGari por tu aportación
 ```typ
-El peso de tus madres se calcula con $lim_(x -> 0) 1/x$.
+El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 #let peso(_madre) = { sym.infinity }
 #for i in range(2) [
   Tu madre #i pesa #peso(i) kg.
@@ -124,7 +124,7 @@ rompe una línea.
   la rompe ni Dios.
   ```
 ][
-  #v(1em)
+  #v(.7em)
   Esta línea no la rompe ni Dios.
 ]
 
@@ -134,7 +134,6 @@ rompe una línea.
   porque me da la gana.
   ```
 ][
-  #v(.3em)
   Esta la rompo yo\
   porque me da la gana.
 ]
@@ -161,10 +160,8 @@ Enumeradas (#hi-link(
 ][
   #set list(indent: 0pt, spacing: auto)
   #set enum(indent: 0pt, spacing: auto)
-  #v(.3em)
   + Primero
   + Segundo
-  #v(.6em)
   - Uno
   - Otro
 ]
@@ -183,7 +180,6 @@ Y se pueden anidar:
 ][
   #set list(indent: 0pt, spacing: auto)
   #set enum(indent: 0pt, spacing: auto)
-  #v(.3em)
   + Primero
     - Primero uno
     - Luego otro
@@ -318,7 +314,7 @@ Para referenciarla, basta con usar `@id`
 
 #pause
 
-#v(.5em)
+#v(1fr)
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
   ```typ
@@ -330,7 +326,6 @@ Para referenciarla, basta con usar `@id`
   #counter(heading).update((6, 9))
   #show heading: set text(size: 25pt)
 
-  #v(.3em)
   === Introducción <intro>
   En la @intro...
 ]
@@ -344,11 +339,13 @@ Para referenciarla, basta con usar `@id`
   #set math.equation(numbering: "(1)")
   #show heading: set text(size: 26pt)
 
-  #v(.3em)
   $ pi = e = 3 $ <real>
   #v(-.5em)
   El @real[Teorema]...
 ]
+
+#v(1fr)
+
 
 #pagebreak()
 

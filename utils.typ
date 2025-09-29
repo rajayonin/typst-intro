@@ -37,9 +37,6 @@
 #let rawc = raw.with(lang: "typc")
 
 
-// default zebraw config
-// #let zebraw = zebraw.with(numbering: false, lang: false)
-
 /// Highlighted link.
 ///
 /// - dest (str): The destination the link points to.

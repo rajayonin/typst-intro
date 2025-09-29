@@ -36,8 +36,6 @@
 
 == Usar Typst
 
-#v(1fr)
-
 - *Online:* #hi-link("https://typst.app", [typst.app])
 #pause
 - *Terminal:* #hi-link(
@@ -80,7 +78,10 @@
       [Typst],
     )
 
-#v(1fr)
+#pause
 
+#v(.6em)
 
-#focus-slide[¡A instalar!]
+#set align(center)
+#set text(1.4em)
+*¡A instalar!*

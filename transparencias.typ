@@ -2,7 +2,6 @@
 #import themes.simple: *
 
 #import "@preview/tiaoma:0.3.0": qrcode
-#import "@preview/zebraw:0.5.5": zebraw
 
 #import "utils.typ": *
 
@@ -43,8 +42,22 @@
   h(spacing, weak: true)
 }
 
-#show raw.where(block: true): it => {
-  zebraw(numbering: false, lang: false, it)
+#show raw.where(block: true): it => context {
+  set text(size: if dark-mode.get() { .9em } else { 1em })
+  let spacing = if dark-mode.get() { .4em } else { .3em }
+
+  v(spacing)
+
+  box(
+    fill: if dark-mode.get() { aqua.darken(75%) } else { color.rgb("#f5f5f5") },
+    outset: (y: .7em),
+    inset: (x: .5em),
+    radius: 0.3em,
+    width: 100%,
+    it,
+  )
+
+  v(spacing)
 }
 
 
@@ -109,5 +122,7 @@
 - #hi-link("https://typst.app/docs/guides/guide-for-latex-users/")[Guía para
     usuarios de #LaTeX]
 - #hi-link("https://gitlab.com/TheZoq2/ttt/")[Typst To #TeX]
-- #hi-link("https://github.com/mitex-rs/mitex")[Mi#TeX] (#LaTeX #sym.arrow Typst)
-- #strike[#hi-link("https://github.com/rajayonin/latex-thesis/")[L. D. Casais -- Memorias de TFG en #LaTeX] (2025)]
+- #hi-link("https://github.com/mitex-rs/mitex")[Mi#TeX] (#LaTeX #sym.arrow
+  Typst)
+- #strike[#hi-link("https://github.com/rajayonin/latex-thesis/")[L. D. Casais --
+      Memorias de TFG en #LaTeX] (2025)]
