@@ -10,6 +10,8 @@
 
 == Modos sintácticos
 
+#v(1fr)
+
 *Código* (`#`): Permite usar directamente el lenguaje de _scripting_.
 ```typ
 #let foo(n) = { n + 1 }
@@ -17,6 +19,8 @@
 ```typ
 Tengo #foo(68) Labubus.
 ```
+
+#v(1em)
 
 #pause
 
@@ -30,6 +34,8 @@ Typst es _blazingly fast_! 🚀
 ```typc
 let cool-os = [*Linux!* 🐧]
 ```
+
+#v(1fr)
 
 #pagebreak()
 
@@ -58,6 +64,9 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 
 
 == Formato de texto
+
+#v(-.4em)
+
 - Comentarios con `//` o `/* */`
 #pause
 - Caracteres especiales (`\\`, `#`, `$`, `_`, `*`) se escapan con `\\`
@@ -284,9 +293,10 @@ Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
 )[Conversor de fórmulas de LaTeX a Typst.]], pero con menos `\`.
 
 - Echadle un vistazo al #hi-link(
-  "https://sitandr.github.io/typst-examples-book/book/basics/math/",
-)[capítulo en Typst Examples Book]
-- Hay herramientas interactivas como #hi-link("https://typerino.com/")[Typerino] para crearlas
+    "https://sitandr.github.io/typst-examples-book/book/basics/math/",
+  )[capítulo en Typst Examples Book]
+- Hay herramientas interactivas como #hi-link("https://typerino.com/")[Typerino]
+  para crearlas
 
 // #link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html")[Chuleta para
 //   fórmulas]
@@ -296,7 +306,10 @@ TL;DR:
 - $"texto"$ con #rawm("\"texto\""), $x y$ con #rawm("x y")
 - $(2a)/b$ con #rawm("(2a)/b"), $(a + b)$ con #rawm("(a + b)")
 - $->$ con #rawm("->"), $<=$ con #rawm("<="), $!=$ con #rawm("!=")
-- $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con #rawm("Omega"), $NN$ con #rawm("NN") (ver #hi-link("https://typst.app/docs/reference/symbols/sym/")[#plain-raw("sym")])
+- $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con
+  #rawm("Omega"), $NN$ con #rawm("NN") (ver #hi-link(
+    "https://typst.app/docs/reference/symbols/sym/",
+  )[#plain-raw("sym")])
 
 
 == Referencias
@@ -353,10 +366,20 @@ Para referenciarla, basta con usar `@id`
 
 #v(1fr)
 
-Las bibliografías se gestionan con #hi-link("https://github.com/plk/biblatex")[Bib#LaTeX] o #hi-link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva].
-- Entradas en un archivo `.bib`/`.yml`, con un ID y atributos#footnote[Más información sobre Bib#TeX/Bib#LaTeX en la #hi-link("https://bibtex.eu/types/")[documentación de CiteDrive].]
-- Es recomendable añadir el #hi-link("https://www.doi.org/the-identifier/what-is-a-doi/")[DOI] siempre que se pueda
-- Se referencian con `@entry-id` o, con suplemento, `@entry-id[suplemento]` (#hi-link("https://typst.app/docs/reference/model/cite/")[#plain-raw("cite")])
+Las bibliografías se gestionan con #hi-link(
+  "https://github.com/plk/biblatex",
+)[Bib#LaTeX] o #hi-link(
+  "https://github.com/typst/hayagriva/blob/main/docs/file-format.md",
+)[Hayagriva].
+- Entradas en un archivo `.bib`/`.yml`, con un ID y atributos#footnote[Más
+    información sobre Bib#TeX/Bib#LaTeX en la #hi-link(
+      "https://bibtex.eu/types/",
+    )[documentación de CiteDrive].]
+- Es recomendable añadir el #hi-link(
+    "https://www.doi.org/the-identifier/what-is-a-doi/",
+  )[DOI] siempre que se pueda
+- Se referencian con `@entry-id` o, con suplemento, `@entry-id[suplemento]`
+  (#hi-link("https://typst.app/docs/reference/model/cite/")[#plain-raw("cite")])
 
 #v(.5em)
 Se imprime con:
@@ -367,18 +390,119 @@ Se imprime con:
 #v(1fr)
 
 
-
 == _Scripting_
+#[
+  #show raw.where(block: false): set raw(lang: "typc")
 
-// variables y funciones
+  // intro, expresiones, bloques, y  operadores
+  Formado por _expresiones_ que se evalúan.
 
-// tipos
+  === Variables
+  - Se declaran con `let`#footnote[No es necesario definirlas en la declaración,
+      e.g. #rawc("let foo")]
+  - Se pueden redeclarar y redefinir
 
-// estructuras de datos
+  === Bloques
+  Existen bloques de código (`{..}`) y bloques de contenido (`[..]`)
+  - Generan un nuevo _scope_#footnote[Siempre puedes acceder al _scope_ padre,
+      pero el hijo sobreescribe]
+  - Ambos se pueden anidar y usar indistintamente
+    ```typ
+    #let foo = [Pepe#{42 * 10}]  // [Pepe420]
+    ```
 
-// control de flujo
+  === Tipos
+  Todos tienen _constructor_, e.g. `str(1)` y _métodos_
+  // #footnote[Hay metodos
+  //   puros, los cuales no modifican el valor devuelven una copia, y no puros],
+  e.g. `"a".len()`
+  #let type(type) = hi-link(
+    "https://typst.app/docs/reference/foundations/" + type,
+    plain-raw(type),
+  )
 
-// ejemplos de generar tablas a partir de arrays
+  - #type("content"): Todo lo que se ve en el documento
+  - #type("str") (`"hola"`), #type("int") (`5`), #type("float") (`4.20`), #type(
+      "bool",
+    ) (`true`), #type("none")
+  - #type("array") (`(1, "patata)`), #type("dictionary") (`(caca: "culo")`)
+
+
+  === Operadores
+  - Asignación: `=`, `+=`, `-=`, `*=`, `/=`
+  - Aritméticos: `+`, `-`, `*`, `/`
+  - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
+  - Lógicos: `and`, `or`, `not`
+  - Pertenencia: `in`, `not in`
+  Para el resto de operaciones, ver módulo #hi-link(
+    "https://typst.app/docs/reference/foundations/calc",
+  )[#plain-raw("calc")].
+
+
+  === Destructurado
+  Esto funciona en todos lados, funciones, etc.
+  ```typc
+  let (x, y) = (0, 1)           // x = 0, y = 1
+  ```
+  ```typc
+  let (_, y, _) = (0, 1, 2)     // y = 1
+  ```
+  ```typc
+  let (a, .., b) = (0, 1, 2, 3) // a = 0, b = 3
+  ```
+  ```typc
+  let (x, ..rest) = (0, 1, 2)   // x = 0, rest = (1, 2)
+  ```
+  // ```typc
+  // let os = (lin: "good", win: "bad", mac: "meh")
+  // let (lin,) = os          // lin = "good"
+  // let (win: rating,) = os  // rating = "bad"
+  // ```
+
+
+  === Control de flujo
+  `if`, `else if`, `else` -- la expresión debe evaluar a #plain-raw("bool")
+  ```typc
+  if a < 0 [ negativo ]
+  else if a == 0 [ zero ]
+  else { calc.sqrt(a) }
+  ```
+
+  === Bucles
+  `while condition {..}`
+
+  `for` -- "ranged for":
+  - `for value in array-or-str {..}`
+  - `for (key, value) in dict {..}`
+
+  También existen `break` y `continue`.
+
+
+  === Funciones
+  Son *puras*, es decir, los parámetros de entrada se pasan por copia.
+  // #footnote[Recordad que podemos desestructurar]
+  - Nombradas: `let foo(x) = {..}`
+  - _Inline_ (_lambdas_): `(x) => {..}`
+
+  Parámetros o *posicionales* (requeridos) o *nombrados* (opcionales)
+  ```typc
+  let foo(a, b: 1) = { a + b }
+  foo(1, b: 2)
+  ```
+
+
+  // ejemplos de generar tablas a partir de arrays
+  === Ejemplos chulos
+  ```typ
+  #table(
+    columns: 3,
+    ..for i in range(6) {
+      ([#i],)
+    }
+  )
+  ```
+]
+
 
 
 == Otras funciones
@@ -393,7 +517,7 @@ Se imprime con:
 
 
 
-== Archivos
+== Módulos
 // import / include
 // Rutas de archivos (--root)
 

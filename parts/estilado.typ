@@ -16,6 +16,8 @@
 == Reglas #rawc("set")
 // _settear_ parámetros de funciones _builtin_
 
+// set-if
+
 
 == Reglas #rawc("show")
 // aplicar reglas a funciones, etc.
