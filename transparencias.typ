@@ -78,7 +78,7 @@
 
   #link("https://gul.uc3m.es", org)
 
-  Octubre 2025
+  Noviembre 2025
 ]
 
 

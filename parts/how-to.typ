@@ -71,23 +71,23 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 #pause
 - Caracteres especiales (`\\`, `#`, `$`, `_`, `*`) se escapan con `\\`
 #pause
-- #strong(text(black)[Negrita]): `*...*` (#hi-link(
-    "https://typst.app/docs/reference/model/strong/",
-    [#plain-raw("strong")],
+- #strong(text(black)[Negrita]): `*...*` (#mod(
+    "reference/model",
+    "strong",
   ))
-- _Cursiva_: `_..._` (#hi-link(
-    "https://typst.app/docs/reference/model/emph/",
-    [#plain-raw("emph")],
+- _Cursiva_: `_..._` (#mod(
+    "reference/model",
+    "emph",
   ))
-- `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#hi-link(
-    "https://typst.app/docs/reference/model/raw/",
-  )[#plain-raw("raw")])
-- #underline[Subrayado]: `#underline[...]`
+- `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#mod(
+    "reference/model",
+    "raw",
+  )- #underline[Subrayado]: `#underline[...]`
 // - #strike[Tachado]: `#strike[...]`
 #pause
-- `= Capítulo`, `== Sección`, `=== Subsección` (#hi-link(
-    "https://typst.app/docs/reference/model/heading/",
-    [#plain-raw("heading")],
+- `= Capítulo`, `== Sección`, `=== Subsección` (#mod(
+    "reference/model",
+    "heading",
   ))
 #pause
 - Notas a pie de página: `#footnote[...]`
@@ -97,11 +97,10 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 #pause
 - Comillas "inteligentes" (dependientes del idioma): `"`, `'`
 #pause
-- Símbolos: `~` (_nsbp_), `---`/`--` (raya/semiraya), #hi-link(
-    "https://typst.app/docs/reference/symbols/sym/",
-  )[#plain-raw("sym")], #hi-link(
-    "https://typst.app/docs/reference/symbols/emoji/",
-  )[#plain-raw("emoji")]
+- Símbolos: `~` (_nsbp_), `---`/`--` (raya/semiraya), #mod(
+    "reference/symbols",
+    "sym",
+  ) #mod("reference/symbols", "emoji")
 
 #focus-slide[
   #underline[Todo esto] son #link(
@@ -149,12 +148,9 @@ rompe una línea.
 
 
 == Listas
-Enumeradas (#hi-link(
-  "https://typst.app/docs/reference/model/enum/",
-  plain-raw("enum"),
-)) o no enumeradas (#hi-link(
-  "https://typst.app/docs/reference/model/list/",
-  plain-raw("list"),
+Enumeradas (#mod("reference/model", "enum")) o no enumeradas (#mod(
+  "reference/model",
+  "list",
 )).
 
 #grid(columns: (1fr, 1fr), column-gutter: 1em)[
@@ -227,6 +223,10 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
   - Equivalente al `H` de #LaTeX
 #pause
 - Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
+#pause
+- Puedes escalarlas con #fn("reference/layout", "scale"), e.g. #rawc(
+    "scale(50%, image(...))",
+  )
 
 #v(.6fr)
 
@@ -303,19 +303,16 @@ Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
 
 TL;DR:
 - $x^(2y)$ con #rawm("x^(2y)"), $x_(2y)$ con #rawm("x_(2y)")
-- $"texto"$ con #rawm("\"texto\""), $x y$ con #rawm("x y")
+- $"texto"$ con #rawm("\"texto\""), $x y$ con #rawm("x y"), $italic("caca")$ con
+  #rawm("italic(\"caca\")")
 - $(2a)/b$ con #rawm("(2a)/b"), $(a + b)$ con #rawm("(a + b)")
 - $->$ con #rawm("->"), $<=$ con #rawm("<="), $!=$ con #rawm("!=")
 - $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con
-  #rawm("Omega"), $NN$ con #rawm("NN") (ver #hi-link(
-    "https://typst.app/docs/reference/symbols/sym/",
-  )[#plain-raw("sym")])
+  #rawm("Omega"), $NN$ con #rawm("NN") (ver #mod("reference/symbols", "sym"))
 
 
 == Referencias
-Primero se crea una marca (#hi-link(
-  "https://typst.app/docs/reference/foundations/label/",
-)[#plain-raw("label")]) con `<id>`.
+Primero se crea una marca (#mod("reference/foundations", "label")) con `<id>`.
 // - Para las referencias bibliográficas, esto no es necesario
 
 #pause
@@ -379,8 +376,10 @@ Las bibliografías se gestionan con #hi-link(
     "https://www.doi.org/the-identifier/what-is-a-doi/",
   )[DOI] siempre que se pueda
 - Se referencian con `@entry-id` o, con suplemento, `@entry-id[suplemento]`
-  (#hi-link("https://typst.app/docs/reference/model/cite/")[#plain-raw("cite")])
+  (#mod("reference/model", "cite"))
 
+
+#pause
 #v(.5em)
 Se imprime con:
 #v(-.5em)
@@ -390,22 +389,32 @@ Se imprime con:
 #v(1fr)
 
 
+
 == _Scripting_
+
+#speaker-note([Por aquí vamos a pasar rápido...])
+
 #[
   #show raw.where(block: false): set raw(lang: "typc")
 
   // intro, expresiones, bloques, y  operadores
   Formado por _expresiones_ que se evalúan.
 
+  #pause
+
   === Variables
   - Se declaran con `let`#footnote[No es necesario definirlas en la declaración,
       e.g. #rawc("let foo")]
   - Se pueden redeclarar y redefinir
 
+  #pause
+
   === Bloques
   Existen bloques de código (`{..}`) y bloques de contenido (`[..]`)
+  #pause
   - Generan un nuevo _scope_#footnote[Siempre puedes acceder al _scope_ padre,
       pero el hijo sobreescribe]
+  #pause
   - Ambos se pueden anidar y usar indistintamente
     ```typ
     #let foo = [Pepe#{42 * 10}]  // [Pepe420]
@@ -416,17 +425,17 @@ Se imprime con:
   // #footnote[Hay metodos
   //   puros, los cuales no modifican el valor devuelven una copia, y no puros],
   e.g. `"a".len()`
-  #let type(type) = hi-link(
-    "https://typst.app/docs/reference/foundations/" + type,
-    plain-raw(type),
-  )
 
+  #pause
+
+  #let type(type) = mod("reference/foundations", type)
   - #type("content"): Todo lo que se ve en el documento
   - #type("str") (`"hola"`), #type("int") (`5`), #type("float") (`4.20`), #type(
       "bool",
     ) (`true`), #type("none")
   - #type("array") (`(1, "patata)`), #type("dictionary") (`(caca: "culo")`)
 
+  #pause
 
   === Operadores
   - Asignación: `=`, `+=`, `-=`, `*=`, `/=`
@@ -434,9 +443,10 @@ Se imprime con:
   - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
   - Lógicos: `and`, `or`, `not`
   - Pertenencia: `in`, `not in`
-  Para el resto de operaciones, ver módulo #hi-link(
-    "https://typst.app/docs/reference/foundations/calc",
-  )[#plain-raw("calc")].
+  Para el resto de operaciones, ver módulo #mod(
+    "reference/foundations",
+    "calc",
+  ).
 
 
   === Destructurado
@@ -460,6 +470,8 @@ Se imprime con:
   // ```
 
 
+  #pause
+
   === Control de flujo
   `if`, `else if`, `else` -- la expresión debe evaluar a #plain-raw("bool")
   ```typc
@@ -471,18 +483,29 @@ Se imprime con:
   === Bucles
   `while condition {..}`
 
+  #pause
+  #v(-.3em)
+
   `for` -- "ranged for":
   - `for value in array-or-str {..}`
   - `for (key, value) in dict {..}`
 
+  #pause
+
   También existen `break` y `continue`.
 
+  #pause
+  #v(-.3em)
 
   === Funciones
   Son *puras*, es decir, los parámetros de entrada se pasan por copia.
   // #footnote[Recordad que podemos desestructurar]
+  #pause
   - Nombradas: `let foo(x) = {..}`
   - _Inline_ (_lambdas_): `(x) => {..}`
+
+  #pause
+  #v(-.2em)
 
   Parámetros o *posicionales* (requeridos) o *nombrados* (opcionales)
   ```typc
@@ -490,35 +513,65 @@ Se imprime con:
   foo(1, b: 2)
   ```
 
-
-  // ejemplos de generar tablas a partir de arrays
   === Ejemplos chulos
+  Generar tablas a partir de CSVs:
   ```typ
   #table(
-    columns: 3,
-    ..for i in range(6) {
-      ([#i],)
+    columns: 2,
+    ..for (.., NIA, nota) in csv("alumnos.csv") {
+      (NIA, nota)
     }
   )
   ```
+
+  #pause
+
+  Subfiguras:
+  ```typ
+  #import "@preview/subpar:0.2.2"
+  #subpar.grid(
+    columns: 2,
+    [#figure(...)], [#figure(...)]
+  )
+  ```
+
+
+  === Otras funciones
+  #v(1fr)
+  Os recomiendo echarles un vistazo a estas:
+  - #fn("reference/layout", "v") y #fn("reference/layout", "h")
+  - #fn("reference/layout", "pagebreak"), #fn("reference/model", "parbreak")
+  - #fn("reference/layout", "box")
+
+  #pause
+  #v(.5fr)
+
+  Mirad documentación de #fn("reference/foundations", "array"), #fn(
+    "reference/foundations",
+    "dictionary",
+  ).
+
+  #v(1fr)
 ]
 
 
 
-== Otras funciones
-
-=== `grid`
-
-
-=== `v` y `h`
-
-
-=== `box`
-
-
-
 == Módulos
+Puedes separar tus proyectos en archivos `.typ`.
+
 // import / include
-// Rutas de archivos (--root)
+- `#include "file.typ"` _inserta_ el contenido del archivo
+#pause
+- `#import "file.typ"` _importa_ el módulo `file`
+  #pause
+  - `#import "file.typ" as foo`: renombra el módulo
+  - `#import "file.typ": foo, bar`: importa variables/funciones específicas
+  - `#import "file.typ": *`: lo importa tó
+
+// Rutas de archivos
+Importante tener en cuenta los _path_:
+- Son relativos al archivo donde se usan
+- `/` (_root_) es el *directorio del archivo que compilamos*
+  - Se puede cambiar _root_ en la configuración (`--root`)
 
 

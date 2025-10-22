@@ -6,17 +6,21 @@
 
 = Plantillas y paquetes
 
-== Paquetes útiles
+== Otros paquetes útiles
 #let package(name) = hi-link(
   "https://typst.app/universe/package/" + name,
   raw(name),
 )
 
+#v(-.4em)
 Disponibles en #hi-link("https://typst.app/universe/")[Typst Universe] (400+).
+
+#speaker-note([Volver a mencionar CeTZ/fletcher.])
+
 - Bloques de código: #package("codly")
 - Gráficas: #package("lilaq")
 - Algoritmos: #package("lovelace")
-- Teoremas: #package("theorion")
+- Teoremas bonicos: #package("theorion")
 - Presentaciones: #package("touying"), #package("gentle-clues"), #package(
     "pinit",
   )
@@ -32,7 +36,7 @@ Disponibles en #hi-link("https://typst.app/universe/")[Typst Universe] (400+).
   )[`srs`]
 
 
-== Plantilla para memorias
+== Plantillas para memorias
 #align(center)[
   #v(1fr)
 
