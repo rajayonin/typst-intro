@@ -9,14 +9,15 @@
 
 #focus-slide[
   // #set raw(lang: "typc") // esto no funciona porque patata
-  #rawc("show") reemplaza funciones, mientras que #rawc("set") sobreescribe parámetros por defecto
+  #rawc("show") reemplaza elementos, mientras que\
+  #rawc("set") sobreescribe parámetros por defecto
 ]
 
 
 == Reglas #rawc("set")
 Ponen parámetros por defecto en funciones _builtin_.
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   #set text(lang: "es")
 
@@ -32,7 +33,7 @@ Ponen parámetros por defecto en funciones _builtin_.
 
 // set-if
 Sólo afectan dentro del _scope_ actual:
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   #if epañol {
     set text(lang: "es")
@@ -57,21 +58,54 @@ Sólo afectan dentro del _scope_ actual:
 
 
 == Reglas #rawc("show")
-// aplicar reglas a funciones, etc.
+Reemplazan (modifican) elementos.
+```typ
+#show /* selector */: /* predicado */
+```
+
+#pause
+
+Los selectores pueden ser:
+- Funciones _builtin_ #sym.arrow reemplazan los elementos
+  - Se puede filtrar por parámetros con #link(
+      "https://typst.app/docs/reference/foundations/function/#definitions-where",
+      rawc(".where()"),
+    )
+- Texto (#rawc("\"caca\"")), #fn("reference/foundations","regex"), #fn("reference/foundations","label") (#rawc("<test>"))
+- El resto del documento (#rawc("show: ..."))
+
+#pause
+
+Los predicados pueden ser:
+- Expresión
+- Función anónima #rawc("it => { }")
+- Regla #rawc("set")
+
+
+=== Ejemplos
+#v(1fr)
+```typ
+#show "Rust": [Rust 🚀]
+```
 
 // show-set
-
-// show-lambda
+```typ
+#show heading: set text(red)
+```
 
 // show-where
+```typ
+#show raw.where(block: false): set raw(lang: "typ")
+```
 
-// show-selector
+// show-lambda
+```typ
+#show header: it => block[
+  \~
+  #emph(it.body)
+  #counter(heading).display(it.numbering)
+  \~
+]
+```
 
-
-== _Scope_
-
-
-== Ejemplos
-// idioma
-// headings (numbering)
-// page
+#v(1fr)

@@ -84,3 +84,9 @@
 
   hi-link(strfmt("https://typst.app/docs/{}/{}", path, name), plain-raw(name))
 }
+
+
+#let two-col(..cols) = {
+  assert(cols.pos().len() == 2, message: "Too many columns!")
+  grid(columns: (1fr, 1fr), column-gutter: 1em, ..cols)
+}

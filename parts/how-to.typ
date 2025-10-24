@@ -126,7 +126,7 @@ rompe una línea.
 
 #pause
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   Esta línea no
   la rompe ni Dios.
@@ -136,7 +136,7 @@ rompe una línea.
   Esta línea no la rompe ni Dios.
 ]
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   Esta la rompo yo\
   porque me da la gana.
@@ -153,7 +153,7 @@ Enumeradas (#mod("reference/model", "enum")) o no enumeradas (#mod(
   "list",
 )).
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   + Primero
   + Segundo
@@ -175,7 +175,7 @@ Enumeradas (#mod("reference/model", "enum")) o no enumeradas (#mod(
 
 Y se pueden anidar:
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   + Primero
     - Primero uno
@@ -204,9 +204,7 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
     "https://github.com/typst/typst/issues/1421",
   )[typst/typst\#1421].], #link(
   "https://pdfa.org/sponsored-standards/",
-)[PDF]#footnote[A partir de la versión 0.14, ver #hi-link(
-    "https://github.com/typst/typst/issues/145",
-  )[typst/typst\#145].], y _raw bytes_.
+)[PDF]#footnote[A partir de la versión 0.14.], y _raw bytes_.
 
 #pause
 
@@ -326,7 +324,7 @@ Para referenciarla, basta con usar `@id`
 
 #v(1fr)
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   === Introducción <intro>
   En la @intro...
@@ -340,7 +338,7 @@ Para referenciarla, basta con usar `@id`
   En la @intro...
 ]
 
-#grid(columns: (1fr, 1fr), column-gutter: 1em)[
+#two-col[
   ```typ
   $ pi = e = 3 $ <real>
   El @real[Teorema]...
@@ -540,8 +538,10 @@ Se imprime con:
   #v(1fr)
   Os recomiendo echarles un vistazo a estas:
   - #fn("reference/layout", "v") y #fn("reference/layout", "h")
-  - #fn("reference/layout", "pagebreak"), #fn("reference/model", "parbreak")
+  - #fn("reference/layout", "pagebreak"), #fn("reference/model", "parbreak"),
+    #fn("reference/model", "linebreak")
   - #fn("reference/layout", "box")
+  - #fn("reference/layout", "align")
 
   #pause
   #v(.5fr)

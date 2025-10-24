@@ -15,7 +15,7 @@
 
 
 === Como #LaTeX...
-- Archivos de texto plano #speaker-note([Bueno para Git, y para
+- Genera documentos a partir de archivos de texto plano #speaker-note([Bueno para Git, y para
     reproductibilidad])
 - Defines reglas #sym.arrow programable
 - Extremadamente útil para $e - c dot u^a = c_i sqrt(o) + n/e^s$
