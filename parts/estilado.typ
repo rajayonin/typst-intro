@@ -31,6 +31,8 @@ Ponen parámetros por defecto en funciones _builtin_.
   ```
 ]
 
+#pause
+
 // set-if
 Sólo afectan dentro del _scope_ actual:
 #two-col[
@@ -71,7 +73,10 @@ Los selectores pueden ser:
       "https://typst.app/docs/reference/foundations/function/#definitions-where",
       rawc(".where()"),
     )
-- Texto (#rawc("\"caca\"")), #fn("reference/foundations","regex"), #fn("reference/foundations","label") (#rawc("<test>"))
+- Texto (#rawc("\"caca\"")), #fn("reference/foundations", "regex"), #fn(
+    "reference/foundations",
+    "label",
+  ) (#rawc("<test>"))
 - El resto del documento (#rawc("show: ..."))
 
 #pause
@@ -88,15 +93,21 @@ Los predicados pueden ser:
 #show "Rust": [Rust 🚀]
 ```
 
+#pause
+
 // show-set
 ```typ
 #show heading: set text(red)
 ```
 
+#pause
+
 // show-where
 ```typ
 #show raw.where(block: false): set raw(lang: "typ")
 ```
+
+#pause
 
 // show-lambda
 ```typ

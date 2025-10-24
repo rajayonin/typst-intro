@@ -41,6 +41,8 @@ let cool-os = [*Linux!* 🐧]
 
 *Mates* (`$..$`): Permite expresar ecuaciones matemáticas.
 
+#pause
+
 ```typ
 $ x = (-b plus.minus sqrt(b^2 - 4a c)) / (2a) $
 ```
@@ -75,10 +77,12 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
     "reference/model",
     "strong",
   ))
+#pause
 - _Cursiva_: `_..._` (#mod(
     "reference/model",
     "emph",
   ))
+#pause
 - `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#mod(
     "reference/model",
     "raw",
@@ -107,6 +111,8 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
     "https://typst.app/docs/reference/foundations/function/#element-functions",
   )["funciones elementales"].
 
+  #pause
+
   `_caca_` #sym.eq.triple `#emph[caca]` #sym.eq.triple `#emph([caca])`
 
   #speaker-note([Mirad la documentación de cada función.])
@@ -118,11 +124,23 @@ rompe una línea.
 
 #pause
 
-- Para saltar una línea, se usa `/`
+- Para saltar una línea, se usa `/` (o #fn(
+    "reference/layout",
+    "linebreak",
+    markup: true,
+  ))
 #pause
-- Para saltar un párrafo se deja una línea en blanco\ (o `#parbreak()`)
+- Para saltar un párrafo se deja una línea en blanco\ (o #fn(
+    "reference/layout",
+    "parbreak",
+    markup: true,
+  ))
 #pause
-- Para saltar una página se usa `#pagebreak()`
+- Para saltar una página se usa #fn(
+    "reference/layout",
+    "pagebreak",
+    markup: true,
+  )
 
 #pause
 
@@ -290,9 +308,12 @@ Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
   "https://qwinsi.github.io/tex2typst-webapp",
 )[Conversor de fórmulas de LaTeX a Typst.]], pero con menos `\`.
 
+#pause
+
 - Echadle un vistazo al #hi-link(
     "https://sitandr.github.io/typst-examples-book/book/basics/math/",
   )[capítulo en Typst Examples Book]
+#pause
 - Hay herramientas interactivas como #hi-link("https://typerino.com/")[Typerino]
   para crearlas
 
@@ -300,11 +321,16 @@ Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
 //   fórmulas]
 
 TL;DR:
+#pause
 - $x^(2y)$ con #rawm("x^(2y)"), $x_(2y)$ con #rawm("x_(2y)")
+#pause
 - $"texto"$ con #rawm("\"texto\""), $x y$ con #rawm("x y"), $italic("caca")$ con
   #rawm("italic(\"caca\")")
+#pause
 - $(2a)/b$ con #rawm("(2a)/b"), $(a + b)$ con #rawm("(a + b)")
+#pause
 - $->$ con #rawm("->"), $<=$ con #rawm("<="), $!=$ con #rawm("!=")
+#pause
 - $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con
   #rawm("Omega"), $NN$ con #rawm("NN") (ver #mod("reference/symbols", "sym"))
 
@@ -366,19 +392,22 @@ Las bibliografías se gestionan con #hi-link(
 )[Bib#LaTeX] o #hi-link(
   "https://github.com/typst/hayagriva/blob/main/docs/file-format.md",
 )[Hayagriva].
+#pause
 - Entradas en un archivo `.bib`/`.yml`, con un ID y atributos#footnote[Más
     información sobre Bib#TeX/Bib#LaTeX en la #hi-link(
       "https://bibtex.eu/types/",
     )[documentación de CiteDrive].]
+#pause
 - Es recomendable añadir el #hi-link(
     "https://www.doi.org/the-identifier/what-is-a-doi/",
   )[DOI] siempre que se pueda
+#pause
 - Se referencian con `@entry-id` o, con suplemento, `@entry-id[suplemento]`
   (#mod("reference/model", "cite"))
 
-
 #pause
 #v(.5em)
+
 Se imprime con:
 #v(-.5em)
 ```typ
@@ -403,6 +432,7 @@ Se imprime con:
   === Variables
   - Se declaran con `let`#footnote[No es necesario definirlas en la declaración,
       e.g. #rawc("let foo")]
+  #pause
   - Se pueden redeclarar y redefinir
 
   #pause
@@ -427,11 +457,14 @@ Se imprime con:
   #pause
 
   #let type(type) = mod("reference/foundations", type)
+
   - #type("content"): Todo lo que se ve en el documento
-  - #type("str") (`"hola"`), #type("int") (`5`), #type("float") (`4.20`), #type(
+  #pause
+  - #type("str"): `"hola"`, #type("int"): `5`, #type("float"): `4.20`, #type(
       "bool",
-    ) (`true`), #type("none")
-  - #type("array") (`(1, "patata)`), #type("dictionary") (`(caca: "culo")`)
+    ): `true`, #type("none")
+  #pause
+  - #type("array"): `(1, "patata")`, #type("dictionary"): `(caca: "culo")`
 
   #pause
 
@@ -441,6 +474,9 @@ Se imprime con:
   - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
   - Lógicos: `and`, `or`, `not`
   - Pertenencia: `in`, `not in`
+
+  #pause
+
   Para el resto de operaciones, ver módulo #mod(
     "reference/foundations",
     "calc",
@@ -512,6 +548,9 @@ Se imprime con:
   ```
 
   === Ejemplos chulos
+
+  #pause
+
   Generar tablas a partir de CSVs:
   ```typ
   #table(
@@ -537,9 +576,10 @@ Se imprime con:
   === Otras funciones
   #v(1fr)
   Os recomiendo echarles un vistazo a estas:
-  - #fn("reference/layout", "v") y #fn("reference/layout", "h")
-  - #fn("reference/layout", "pagebreak"), #fn("reference/model", "parbreak"),
-    #fn("reference/model", "linebreak")
+  - #fn("reference/layout", "v") (espaciado #[*v*]ertical) y #fn(
+      "reference/layout",
+      "h",
+    ) (espaciado #[*h*]orizontal)
   - #fn("reference/layout", "box")
   - #fn("reference/layout", "align")
 
@@ -568,10 +608,14 @@ Puedes separar tus proyectos en archivos `.typ`.
   - `#import "file.typ": foo, bar`: importa variables/funciones específicas
   - `#import "file.typ": *`: lo importa tó
 
+  #pause
+
 // Rutas de archivos
 Importante tener en cuenta los _path_:
 - Son relativos al archivo donde se usan
+  #pause
 - `/` (_root_) es el *directorio del archivo que compilamos*
+  #pause
   - Se puede cambiar _root_ en la configuración (`--root`)
 
 

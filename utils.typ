@@ -61,14 +61,17 @@
 ///
 /// - path (str): Path in the documentation URL
 /// - name (str): Function name
-/// ->
-#let fn(path, name) = {
+/// - hastag (bool): whether to add markup
+/// -> content
+#let fn(path, name, markup: false) = {
   assert(not path.ends-with("/"))
   assert(not path.starts-with("/"))
   assert(not name.ends-with("/"))
   assert(not name.starts-with("/"))
 
-  link(strfmt("https://typst.app/docs/{}/{}", path, name), rawc(name))
+  link(strfmt("https://typst.app/docs/{}/{}", path, name), if markup {
+    raw("#" + name + "()")
+  } else { rawc(name) })
 }
 
 /// Mentions a Typst module, with link to docs.
