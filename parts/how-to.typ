@@ -456,7 +456,7 @@ Se imprime con:
 
   #pause
 
-  #let type(type) = mod("reference/foundations", type)
+  #let type(type) = fn("reference/foundations", type)
 
   - #type("content"): Todo lo que se ve en el documento
   #pause
@@ -465,6 +465,8 @@ Se imprime con:
     ): `true`, #type("none")
   #pause
   - #type("array"): `(1, "patata")`, #type("dictionary"): `(caca: "culo")`
+  #pause
+  - #type("fraction"): `1fr`, #type("lenght"): `1pt`/`1cm`/`1em`
 
   #pause
 
@@ -472,8 +474,7 @@ Se imprime con:
   - Asignación: `=`, `+=`, `-=`, `*=`, `/=`
   - Aritméticos: `+`, `-`, `*`, `/`
   - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
-  - Lógicos: `and`, `or`, `not`
-  - Pertenencia: `in`, `not in`
+  - Lógicos: `and`, `or`, `not`; y pertenencia: `in`, `not in`
 
   #pause
 
@@ -581,6 +582,7 @@ Se imprime con:
       "h",
     ) (espaciado #[*h*]orizontal)
   - #fn("reference/layout", "box")
+  - #fn("reference/layout", "grid")
   - #fn("reference/layout", "align")
 
   #pause

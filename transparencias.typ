@@ -1,4 +1,5 @@
 #import "@preview/touying:0.6.1": *
+#import "@preview/grayness:0.4.1": image-transparency
 #import themes.simple: *
 
 #import "@preview/tiaoma:0.3.0": qrcode
@@ -10,7 +11,7 @@
 
 #set text(lang: "es")
 
-#let title = [Memorias de p\*\*\*\* madre]
+#let title = [Memorias de p\*\*\* madre]
 #let org = [GUL UC3M]
 
 // pass the "PRESENTATION" variable w/ --input to enable presentation mode
@@ -65,16 +66,27 @@
   v(spacing)
 }
 
+// custom title slide
+#let title-slide = title-slide.with(
+  config: config-page(background: image-transparency(
+    read("img/gul_logo.svg", encoding: none),
+    alpha: 30%,
+    format: "svg",
+  )),
+)
+
 
 /* TITLEPAGE */
 
 #title-slide[
   #heading(title, outlined: false)
-  #v(1em)
-  Introducción a Typst
+  === Introducción a Typst
   #v(2em)
 
-  #link("https://github.com/rajayonin", [Luis Daniel Casais])
+  Luis Daniel Casais\
+  #hi-link("https://github.com/rajayonin")[\@rajayonin]
+
+  #v(1em)
 
   #link("https://gul.uc3m.es", org)
 
@@ -91,16 +103,12 @@
 /* QR */
 == Transparencias
 #{
+  let url = "https://github.com/rajayonin/typst-intro/blob/main/transparencias.pdf"
   v(0.7fr)
   set align(center)
-  qrcode(
-    options: (scale: 5.0),
-    "https://github.com/rajayonin/typst-intro/blob/main/transparencias.pdf",
-  )
-  hi-link(
-    "https://github.com/rajayonin/typst-intro/",
-    text([github.com/rajayonin/typst-intro], size: 32pt),
-  )
+
+  qrcode(options: (scale: 5.0), url)
+  hi-link(url, text([github.com/rajayonin/typst-intro], size: 32pt))
   v(1fr)
 }
 
@@ -118,6 +126,8 @@
 #clear-header()
 
 == Más información
+#v(1fr)
+
 - #hi-link("https://typst.app/docs")[Documentación de Typst]
 - #hi-link("https://sitandr.github.io/typst-examples-book/book/")[Typst Examples
     Book]
@@ -131,3 +141,9 @@
   Typst)
 - #strike[#hi-link("https://github.com/rajayonin/latex-thesis/")[L. D. Casais --
       Memorias de TFG en #LaTeX] (2025)]
+
+#v(1fr)
+
+#title-slide[
+  = ¡Ánimo!
+]
