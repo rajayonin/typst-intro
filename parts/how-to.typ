@@ -212,8 +212,6 @@ Y se pueden anidar:
 
 == Imágenes
 
-#v(1fr)
-
 Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
   "https://jpeg.org/jpeg/",
 )[JPG], #link("https://www.w3.org/Graphics/GIF/spec-gif87.txt")[GIF], #link(
@@ -235,8 +233,9 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
 
 #pause
 
-- La imagen siempre se incrusta donde especificas
-  - Equivalente al `H` de #LaTeX
+- Colocación: parámetro `placement`
+  - #rawc("none"): exactamente aquí (_default_)
+  - #rawc("auto"): arriba o abajo de la página
 #pause
 - Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
 #pause
@@ -244,9 +243,6 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
     "scale(50%, image(...))",
   )
 
-#v(.6fr)
-
-#pagebreak()
 
 === Generación de diagramas
 Se recomienda trabajar con SVGs.
@@ -264,6 +260,7 @@ Se recomienda trabajar con SVGs.
   )[fletcher]: Puro Typst (para _tryhards_)
 
 #pause
+#v(.7em)
 
 #warning[Si los SVG dan problemas#footnote[Ver #hi-link(
       "https://www.drawio.com/doc/faq/svg-export-text-problems",
@@ -301,6 +298,23 @@ También podéis usar un #hi-link(
 
 Veremos más adelante cómo hacer magia con esto...
 
+
+== Subfiguras
+
+#v(1fr)
+
+```typ
+#import "@preview/subpar:0.2.2"
+```
+```typ
+#subpar.grid(
+  caption: [...]
+  columns: 2,
+  [ #figure(caption: [...], ..)  <subfig0>],
+  [ #figure(caption: [...], ..)  <subfig1>],
+) <fig0>
+```
+#v(1fr)
 
 
 == Ecuaciones
@@ -449,10 +463,9 @@ Se imprime con:
     ```
 
   === Tipos
-  Todos tienen _constructor_, e.g. `str(1)` y _métodos_
-  // #footnote[Hay metodos
-  //   puros, los cuales no modifican el valor devuelven una copia, y no puros],
-  e.g. `"a".len()`
+  Todos tienen _constructor_, e.g. `str(1)` y _métodos_, e.g. `"a".len()`.
+  #speaker-note[Hay metodos puros, los cuales no modifican el valor devuelven
+    una copia, y no puros]
 
   #pause
 
@@ -460,9 +473,9 @@ Se imprime con:
 
   - #type("content"): Todo lo que se ve en el documento
   #pause
-  - #type("str"): `"hola"`, #type("int"): `5`, #type("float"): `4.20`, #type(
+  - #type("str"): `"E"`, #type("int"): `5`, #type("float"): `6.7`, #type(
       "bool",
-    ): `true`, #type("none")
+    ): `true`, #type("none"), #type("auto")
   #pause
   - #type("array"): `(1, "patata")`, #type("dictionary"): `(caca: "culo")`
   #pause
@@ -530,29 +543,8 @@ Se imprime con:
   También existen `break` y `continue`.
 
   #pause
-  #v(-.3em)
 
-  === Funciones
-  Son *puras*, es decir, los parámetros de entrada se pasan por copia.
-  // #footnote[Recordad que podemos desestructurar]
-  #pause
-  - Nombradas: `let foo(x) = {..}`
-  - _Inline_ (_lambdas_): `(x) => {..}`
-
-  #pause
-  #v(-.2em)
-
-  Parámetros o *posicionales* (requeridos) o *nombrados* (opcionales)
-  ```typc
-  let foo(a, b: 1) = { a + b }
-  foo(1, b: 2)
-  ```
-
-  === Ejemplos chulos
-
-  #pause
-
-  Generar tablas a partir de CSVs:
+  *Ejemplo* -- generar tablas a partir de CSVs:
   ```typ
   #table(
     columns: 2,
@@ -562,16 +554,32 @@ Se imprime con:
   )
   ```
 
+  === Funciones
+  Son *puras*, es decir, los parámetros de entrada se pasan por copia.
+  // #footnote[Recordad que podemos desestructurar]
+  #pause
+  - Nombradas: `let foo(x) = {..}`
+  - _Inline_ (_lambdas_): `(x) => {..}`
+
   #pause
 
-  Subfiguras:
-  ```typ
-  #import "@preview/subpar:0.2.2"
-  #subpar.grid(
-    columns: 2,
-    [#figure(...)], [#figure(...)]
-  )
+  Parámetros *posicionales* (requeridos) o *nombrados* (opcionales)
+  ```typc
+  let foo(a, b: 1) = { a + b }
+  foo(1, b: 2)
   ```
+
+  #pause
+  - Parámetros variádicos (#type("arguments")): `let foo(x, ..args) = {..}`
+
+  #pause
+
+  - Por defecto retornan todo el bloque, a no ser que se use `return`.
+
+  #pause
+  - #link(
+      "https://typst.app/docs/reference/foundations/function/#definitions-with",
+    )[`.with(..)`] devuelve una función con parámetros preaplicados.
 
 
   === Otras funciones
