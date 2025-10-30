@@ -568,18 +568,16 @@ Se imprime con:
   let foo(a, b: 1) = { a + b }
   foo(1, b: 2)
   ```
-
   #pause
   - Parámetros variádicos (#type("arguments")): `let foo(x, ..args) = {..}`
-
   #pause
-
-  - Por defecto retornan todo el bloque, a no ser que se use `return`.
-
+  - Retornan todo el bloque, a no ser que se use `return`
   #pause
   - #link(
       "https://typst.app/docs/reference/foundations/function/#definitions-with",
-    )[`.with(..)`] devuelve una función con parámetros preaplicados.
+    )[`.with(..)`] devuelve una función con parámetros preaplicados
+  #pause
+  - Parámetros #fn("reference/foundations", "content") se pueden sacar fuera, e.g. `foo(b: 2)[a]`
 
 
   === Otras funciones
