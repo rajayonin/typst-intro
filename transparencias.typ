@@ -11,7 +11,7 @@
 
 #set text(lang: "es")
 
-#let title = [Memorias de p\*\*\* madre]
+#let title = [Memorias de p\*\*\*\* madre]
 #let org = [GUL UC3M]
 
 // pass the "PRESENTATION" variable w/ --input to enable presentation mode
