@@ -24,6 +24,7 @@ Disponibles en #hi-link("https://typst.app/universe/")[Typst Universe] (400+).
 - Presentaciones: #package("touying"), #package("gentle-clues"), #package(
     "pinit",
   )
+#speaker-note([Estas transparencias están echas en Typst con Touying.])
 - Glosario: #package("glosarium")
 - Gantt: #package("timeley")
 // - Mierda en pantalla: #package("drafting")
