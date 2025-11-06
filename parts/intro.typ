@@ -15,7 +15,7 @@
 
 
 === Como #LaTeX...
-- Genera documentos a partir de archivos de texto plano
+- Genera documentos (PDFs) a partir de archivos de texto plano
 #speaker-note([Texto plano: fácil de leer/escribir, casi imposible de corromper, se pega bien con IDEs, Git, y LLMs.])
 - Defines reglas #sym.arrow programable
 - Extremadamente útil para $e - c dot u^a = c_i sqrt(o) + n/e^s$
