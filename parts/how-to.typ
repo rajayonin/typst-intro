@@ -318,6 +318,9 @@ Veremos más adelante cómo hacer magia con esto...
 
 
 == Ecuaciones
+
+#v(-.1em)
+
 Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
   "https://qwinsi.github.io/tex2typst-webapp",
 )[Conversor de fórmulas de LaTeX a Typst.]], pero con menos `\`.

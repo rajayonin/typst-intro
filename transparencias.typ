@@ -101,16 +101,21 @@
 #clear-header()
 
 /* QR */
-== Transparencias
-#{
-  let url = "https://github.com/rajayonin/typst-intro/blob/main/transparencias.pdf"
-  v(0.7fr)
-  set align(center)
 
-  qrcode(options: (scale: 5.0), url)
-  hi-link(url, text([github.com/rajayonin/typst-intro], size: 32pt))
-  v(1fr)
-}
+#let transparencias = [
+  == Transparencias
+  #{
+    let url = "https://github.com/rajayonin/typst-intro/blob/main/transparencias.pdf"
+    v(0.7fr)
+    set align(center)
+
+    qrcode(options: (scale: 5.0), url)
+    hi-link(url, text([github.com/rajayonin/typst-intro], size: 32pt))
+    v(1fr)
+  }
+]
+
+#transparencias
 
 
 /* CONTENTS */
@@ -143,6 +148,9 @@
       Memorias de TFG en #LaTeX] (2025)]
 
 #v(1fr)
+
+
+#transparencias
 
 #title-slide[
   = ¡Ánimo!
