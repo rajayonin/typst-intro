@@ -71,7 +71,7 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 
 - Comentarios con `//` o `/* */`
 #pause
-- Caracteres especiales (`\\`, `#`, `$`, `_`, `*`) se escapan con `\\`
+- Caracteres especiales (`\`, `#`, `$`, `_`, `*`) se escapan con `\`
 #pause
 - #strong(text(black)[Negrita]): `*...*` (#mod(
     "reference/model",
@@ -84,7 +84,8 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 - `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#mod(
     "reference/model",
     "raw",
-  )- #underline[Subrayado]: `#underline[...]`
+  ))
+- #underline[Subrayado]: `#underline[...]`
 // - #strike[Tachado]: `#strike[...]`
 #pause
 - `= Capítulo`, `== Sección`, `=== Subsección` (#mod(
@@ -126,7 +127,7 @@ rompe una línea.
 
 #pause
 
-- Para saltar una línea, se usa `/` (o #fn(
+- Para saltar una línea, se usa `\` (o #fn(
     "reference/layout",
     "linebreak",
     markup: true,
@@ -234,13 +235,15 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
 ) <fig:img0> // label
 ```
 
+// TODO: show
+
 #pause
 
 - Colocación: parámetro `placement`
   - #rawc("none"): exactamente aquí (_default_)
   - #rawc("auto"): arriba o abajo de la página
 // #pause
-- Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
+- Para hacerlas _inline_, usa `#box` en lugar de `#figure`
 // #pause
 - Puedes escalarlas con #fn("reference/layout", "scale"), e.g. #rawc(
     "scale(50%, image(...))",
@@ -290,13 +293,15 @@ También podéis usar un #hi-link(
 #figure(
   table(
     columns: 2, // o `(1fr, 1fr)`
-    align: horizon, // o `auto` o `(left, right)`
+    align: center, // o `auto` o `(left, right)`
     [Fila 0, Columna 0], [Fila 0, Columna 1],
     [Fila 1, Columna 0], [Fila 1, Columna 1],
   ),
   caption: [...]
 ) <tab:example>
 ```
+
+// TODO: show
 
 #pause
 
@@ -343,6 +348,8 @@ Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
 
 // #link("https://qwinsi.github.io/tex2typst-webapp/cheat-sheet.html")[Chuleta para
 //   fórmulas]
+
+#pause
 
 TL;DR:
 #pause
@@ -512,7 +519,7 @@ Se imprime con:
     - Lógicos: `and`, `or`, `not`; y pertenencia: `in`, `not in`
 
     #pause
-    #v(-.1em)
+    #v(-.2em)
 
     Para el resto de operaciones, ver módulo #mod(
       "reference/foundations",
@@ -603,7 +610,8 @@ Se imprime con:
   foo(1, b: 2)
   ```
   #pause
-  - Parámetros variádicos (#type("arguments")): `let f(x, ..args) = {}`
+  - Parámetros variádicos (#fn("reference/foundations", "arguments")):
+    `let f(x, ..args) = {}`
   #pause
   - Retornan todo el bloque, a no ser que se use `return`
   #pause
