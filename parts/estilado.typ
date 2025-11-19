@@ -67,24 +67,32 @@ Reemplazan (modifican) elementos.
 
 #pause
 
-Los selectores pueden ser:
-- Funciones _builtin_ #sym.arrow reemplazan los elementos
-  - Se puede filtrar por parámetros con #link(
-      "https://typst.app/docs/reference/foundations/function/#definitions-where",
-      rawc(".where()"),
-    )
-- Texto (#rawc("\"caca\"")), #fn("reference/foundations", "regex"), #fn(
-    "reference/foundations",
-    "label",
-  ) (#rawc("<test>"))
-- El resto del documento (#rawc("show: ..."))
+#[
+  #set list(spacing: .9em)
 
-#pause
+  Los selectores pueden ser:
+  #v(-.5em)
+  - Funciones _builtin_ #sym.arrow reemplazan los elementos
+    - Se puede filtrar por parámetros con #link(
+        "https://typst.app/docs/reference/foundations/function/#definitions-where",
+        rawc(".where()"),
+      )
+  - Texto (#rawc("\"caca\"")), #fn("reference/foundations", "regex"), #fn(
+      "reference/foundations",
+      "label",
+    ) (#rawc("<test>"))
+  - El resto del documento (#rawc("show: ..."))
 
-Los predicados pueden ser:
-- Expresión
-- Función anónima #rawc("it => { }")
-- Regla #rawc("set")
+  #pause
+  Los predicados pueden ser:
+  #v(-.5em)
+  - Expresión
+  - Función anónima #rawc("it => { }")
+  - Regla #rawc("set")
+]
+
+
+#pagebreak()
 
 
 === Ejemplos

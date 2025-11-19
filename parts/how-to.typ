@@ -38,7 +38,6 @@ let cool-os = [*Linux!* 🐧]
 #v(1fr)
 
 #pagebreak()
-
 *Mates* (`$..$`): Permite expresar ecuaciones matemáticas.
 
 #pause
@@ -65,6 +64,7 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 ```
 
 
+
 == Formato de texto
 
 #v(-.4em)
@@ -77,12 +77,10 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
     "reference/model",
     "strong",
   ))
-#pause
 - _Cursiva_: `_..._` (#mod(
     "reference/model",
     "emph",
   ))
-#pause
 - `Monoespaciado`: #raw("`...`") o #raw("```") (bloques de código) (#mod(
     "reference/model",
     "raw",
@@ -106,6 +104,8 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
     "sym",
   ) #mod("reference/symbols", "emoji")
 
+
+
 #focus-slide[
   #underline[Todo esto] son #link(
     "https://typst.app/docs/reference/foundations/function/#element-functions",
@@ -117,6 +117,8 @@ El peso de tus madres se calcula con $lim_(x -> 0) 1/x$
 
   #speaker-note([Mirad la documentación de cada función.])
 ]
+
+
 
 == Saltos
 Los saltos de línea son automáticos. Un salto de línea en el archivo fuente no
@@ -210,6 +212,7 @@ Y se pueden anidar:
 ]
 
 
+
 == Imágenes
 
 Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
@@ -236,12 +239,15 @@ Soporta #link("https://www.w3.org/TR/REC-png-961001")[PNG], #link(
 - Colocación: parámetro `placement`
   - #rawc("none"): exactamente aquí (_default_)
   - #rawc("auto"): arriba o abajo de la página
-#pause
+// #pause
 - Para hacerlas _inline_, usa `#box` en lugar de `#figure`.
-#pause
+// #pause
 - Puedes escalarlas con #fn("reference/layout", "scale"), e.g. #rawc(
     "scale(50%, image(...))",
   )
+
+
+#pagebreak()
 
 
 === Generación de diagramas
@@ -260,14 +266,12 @@ Se recomienda trabajar con SVGs.
   )[fletcher]: Puro Typst (para _tryhards_)
 
 #pause
-#v(.7em)
 
 #warning[Si los SVG dan problemas#footnote[Ver #hi-link(
       "https://www.drawio.com/doc/faq/svg-export-text-problems",
     )[draw.io FAQ].], exportar como PDF, importar en #hi-link(
     "https://inkscape.org/",
   )[Inkscape], y re-exportar a SVG.]
-
 
 
 == Tablas
@@ -299,6 +303,7 @@ También podéis usar un #hi-link(
 Veremos más adelante cómo hacer magia con esto...
 
 
+
 == Subfiguras
 
 #v(1fr)
@@ -317,13 +322,15 @@ Veremos más adelante cómo hacer magia con esto...
 #v(1fr)
 
 
+
 == Ecuaciones
 
-#v(-.1em)
+#v(-.2em)
 
 Sintaxis _similar_ a #LaTeX#footnote[#hi-link(
   "https://qwinsi.github.io/tex2typst-webapp",
 )[Conversor de fórmulas de LaTeX a Typst.]], pero con menos `\`.
+#v(-.3em)
 
 #pause
 
@@ -350,6 +357,7 @@ TL;DR:
 #pause
 - $forall$ con #rawm("forall") ó `∀`, $alpha$ con #rawm("alpha"), $Omega$ con
   #rawm("Omega"), $NN$ con #rawm("NN") (ver #mod("reference/symbols", "sym"))
+
 
 
 == Referencias
@@ -387,20 +395,23 @@ Para referenciarla, basta con usar `@id`
   El @real[Teorema]...
   ```
 ][
-  #set math.equation(numbering: "(1)")
-  #show heading: set text(size: 26pt)
+  // this gives a warning...
+  // #set math.equation(numbering: "(1)")
+  // $ pi = e = 3 $ <real>
+  // #v(-.4em)
+  // El @real[Teorema]...
 
-  $ pi = e = 3 $ <real>
-  #v(-.5em)
-  El @real[Teorema]...
+  $ pi = e = 3 $
+  #place(horizon + end)[#v(-1.5em) $(1)$]
+  #v(-.4em)
+  El Teorema 1...
 ]
 
 #v(1fr)
 
 
-#pagebreak()
 
-=== Bibliografía
+== Bibliografía
 
 #v(1fr)
 
@@ -450,7 +461,9 @@ Se imprime con:
   - Se declaran con `let`#footnote[No es necesario definirlas en la declaración,
       e.g. #rawc("let foo")]
   #pause
-  - Se pueden redeclarar y redefinir
+  - Se pueden redeclarar y redefinir (_shadowing_)
+  #speaker-note([En el caso de redefinir una función elemental, se puede hacer
+    referencia a la original con `std.<func>`])
 
   #pause
 
@@ -465,39 +478,47 @@ Se imprime con:
     #let foo = [Pepe#{42 * 10}]  // [Pepe420]
     ```
 
-  === Tipos
-  Todos tienen _constructor_, e.g. `str(1)` y _métodos_, e.g. `"a".len()`.
-  #speaker-note[Hay metodos puros, los cuales no modifican el valor devuelven
-    una copia, y no puros]
+  #slide[
+    #set list(spacing: .9em)
 
-  #pause
+    #v(-.5em)
+    === Tipos
+    Todos tienen _constructor_, e.g. `str(1)` y _métodos_, e.g. `"a".len()`.
+    #speaker-note[Hay metodos puros, los cuales no modifican el valor devuelven
+      una copia, y no puros]
 
-  #let type(type) = fn("reference/foundations", type)
+    #pause
+    #v(-.2em)
 
-  - #type("content"): Todo lo que se ve en el documento
-  #pause
-  - #type("str"): `"E"`, #type("int"): `5`, #type("float"): `6.7`, #type(
-      "bool",
-    ): `true`, #type("none"), #type("auto")
-  #pause
-  - #type("array"): `(1, "patata")`, #type("dictionary"): `(caca: "culo")`
-  #pause
-  - #type("fraction"): `1fr`, #type("lenght"): `1pt`/`1cm`/`1em`
+    #let type(type) = fn("reference/foundations", type)
 
-  #pause
+    - #type("content"): Todo lo que se ve en el documento
+    #pause
+    - #type("str"): `"E"`, #type("int"): `5`, #type("float"): `6.7`, #type(
+        "bool",
+      ): `true`, #type("none"), #type("auto")
+    #pause
+    - #type("array"): `(1, "patata")`, #type("dictionary"): `(caca: "culo")`
+    #pause
+    - #type("fraction"): `1fr`, #type("lenght"): `1pt`/`1cm`/`1em`
 
-  === Operadores
-  - Asignación: `=`, `+=`, `-=`, `*=`, `/=`
-  - Aritméticos: `+`, `-`, `*`, `/`
-  - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
-  - Lógicos: `and`, `or`, `not`; y pertenencia: `in`, `not in`
+    #pause
+    #v(-.5em)
 
-  #pause
+    === Operadores
+    - Asignación: `=`, `+=`, `-=`, `*=`, `/=`
+    - Aritméticos: `+`, `-`, `*`, `/`
+    - Relacionales: `==`, `!=`, `<`, `>`, `<=`, `>=`
+    - Lógicos: `and`, `or`, `not`; y pertenencia: `in`, `not in`
 
-  Para el resto de operaciones, ver módulo #mod(
-    "reference/foundations",
-    "calc",
-  ).
+    #pause
+    #v(-.1em)
+
+    Para el resto de operaciones, ver módulo #mod(
+      "reference/foundations",
+      "calc",
+    ).
+  ]
 
 
   === Destructurado
@@ -521,8 +542,7 @@ Se imprime con:
   // ```
 
 
-  #pause
-
+  #pagebreak()
   === Control de flujo
   `if`, `else if`, `else` -- la expresión debe evaluar a #plain-raw("bool")
   ```typc
@@ -530,6 +550,8 @@ Se imprime con:
   else if a == 0 [ zero ]
   else { calc.sqrt(a) }
   ```
+
+  #pause
 
   === Bucles
   `while condition {..}`
@@ -545,7 +567,8 @@ Se imprime con:
 
   También existen `break` y `continue`.
 
-  #pause
+  #pagebreak()
+  #v(1fr)
 
   *Ejemplo* -- generar tablas a partir de CSVs:
   ```typ
@@ -557,6 +580,12 @@ Se imprime con:
   )
   ```
 
+  #v(1fr)
+
+  #pagebreak()
+
+
+  #v(-.5em)
   === Funciones
   Son *puras*, es decir, los parámetros de entrada se pasan por copia.
   // #footnote[Recordad que podemos desestructurar]
@@ -566,13 +595,15 @@ Se imprime con:
 
   #pause
 
+  #v(-.3em)
+
   Parámetros *posicionales* (requeridos) o *nombrados* (opcionales)
   ```typc
   let foo(a, b: 1) = { a + b }
   foo(1, b: 2)
   ```
   #pause
-  - Parámetros variádicos (#type("arguments")): `let foo(x, ..args) = {..}`
+  - Parámetros variádicos (#type("arguments")): `let f(x, ..args) = {}`
   #pause
   - Retornan todo el bloque, a no ser que se use `return`
   #pause
@@ -580,8 +611,11 @@ Se imprime con:
       "https://typst.app/docs/reference/foundations/function/#definitions-with",
     )[`.with(..)`] devuelve una función con parámetros preaplicados
   #pause
-  - Parámetros #fn("reference/foundations", "content") se pueden sacar fuera, e.g. `foo(b: 2)[a]`
+  - Parámetros #fn("reference/foundations", "content") se pueden sacar fuera,
+    e.g. `foo(b: 2)[a]`
 
+
+  #pagebreak()
 
   === Otras funciones
   #v(1fr)
@@ -593,6 +627,7 @@ Se imprime con:
   - #fn("reference/layout", "box")
   - #fn("reference/layout", "grid")
   - #fn("reference/layout", "align")
+  - #fn("reference/layout", "place")
 
   #pause
   #v(.5fr)

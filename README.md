@@ -18,6 +18,11 @@ Presentation mode:
 typst c --input PRESENTATION=1 transparencias.typ
 ```
 
+[Pympress](https://pympress.github.io/) mode:
+```
+typst c --input PYMPRESS=1 transparencias.typ
+```
+
 
 
 ## Cool info

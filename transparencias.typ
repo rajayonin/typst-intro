@@ -18,12 +18,18 @@
 #let presentation-mode = (
   sys.inputs.at("PRESENTATION", default: none) != none
 )
+#let pympress-mode = (
+  sys.inputs.at("PYMPRESS", default: none) != none
+)
 
 #show: simple-theme.with(
   aspect-ratio: "4-3",
   footer: [#org --- #title],
   primary: primary-color,
-  config-common(handout: not presentation-mode),
+  config-common(
+    handout: not (presentation-mode or pympress-mode),
+    show-notes-on-second-screen: if pympress-mode { right } else { none },
+  ),
 )
 
 
@@ -67,18 +73,33 @@
 }
 
 // custom title slide
-#let title-slide = title-slide.with(
-  config: config-page(background: image-transparency(
-    read("img/gul_logo.svg", encoding: none),
-    alpha: 30%,
-    format: "svg",
-  )),
+
+// this doesn't work right with `show-notes-on-second-screen`
+// #let my-title-slide = title-slide.with(
+//   config: config-page(background: image-transparency(
+//     read("img/gul_logo.svg", encoding: none),
+//     alpha: 30%,
+//     format: "svg",
+//   )),
+// )
+
+#let my-title-slide(body, config: (:)) = title-slide(
+  place(
+    top + center,
+    image-transparency(
+      read("img/gul_logo.svg", encoding: none),
+      alpha: 30%,
+      format: "svg",
+    ),
+  )
+    + body,
+  config: config,
 )
 
 
 /* TITLEPAGE */
 
-#title-slide[
+#my-title-slide[
   #heading(title, outlined: false)
   === Introducción a Typst
   #v(2em)
@@ -152,6 +173,6 @@
 
 #transparencias
 
-#title-slide[
+#my-title-slide[
   = ¡Ánimo!
 ]
