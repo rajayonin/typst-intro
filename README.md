@@ -2,11 +2,9 @@
 [Grabación de la charla](https://youtu.be/Apaqtno3ACE).
 
 
-## Pre-requisites
-This presentation uses [Touying](https://touying-typ.github.io/), a [Typst](https://typst.app) presentation package.
-
-
 ## Compilation
+This presentation uses [Touying](https://touying-typ.github.io/), a [Typst](https://typst.app) presentation package.  
+You first need to install the [Typst](https://typst.app) compiler (version, at the time of writting, 0.14.0).
 
 Handout (default) mode:
 ```
